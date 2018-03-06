@@ -4,7 +4,7 @@
   list-style: none;
   padding: 0;
 
-  max-height: 300px;
+  max-height: 180px;
   overflow: auto;
 
   transition: all 250ms ease;
@@ -96,4 +96,9 @@
   &:focus, &:active {
     border-color: #961842;
   }
+}
+
+.pagination {
+  padding: 0 5px;
+  cursor: pointer;
 }

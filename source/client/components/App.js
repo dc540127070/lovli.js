@@ -16,7 +16,7 @@ const App = () => (
         <br />
         You're connected to <a href="https://github.com/rethinkdb/horizon" target="_blank">horizon</a>.
       </p>
-      <TodoList limit={100} />
+      <TodoList limit={3}/>
       <AddTodoButton />
       <div className={styles.footer}>
         ToDos are deleted automatically every 10 minutes.
