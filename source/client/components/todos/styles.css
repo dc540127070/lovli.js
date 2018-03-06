@@ -102,3 +102,12 @@
   padding: 0 5px;
   cursor: pointer;
 }
+
+.sortlist{
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.sort{
+  float: right;
+}

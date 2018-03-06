@@ -16,7 +16,7 @@ class Sort extends Component {
 
   render(){
     return (
-      <div>
+      <div className={styles.sortlist}>
         <select className={styles.sort} defaultValue={this.props.sort} onChange={this.changeSelect.bind(this)}>
             <option value ="0">时间正序</option>
             <option value ="1">时间倒序</option>
