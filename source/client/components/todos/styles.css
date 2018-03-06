@@ -4,7 +4,7 @@
   list-style: none;
   padding: 0;
 
-  max-height: 180px;
+  max-height: 200px;
   overflow: auto;
 
   transition: all 250ms ease;

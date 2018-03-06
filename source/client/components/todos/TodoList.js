@@ -3,6 +3,7 @@ import { subscribe } from 'horizon-react';
 
 import TodoItem from './TodoItem';
 import Pagination from './Pagination';
+import Sort from './Sort';
 
 import styles from './styles';
 
@@ -16,26 +17,58 @@ class TodoList extends Component {
   constructor(props){
     super(props);
     this.state = {
-      page:1
+      page:1,
+      sort:0
     }
   }
 
   changePage(num) {
-    this.setState({
+    this.setState(Object.assign({},this.state,{
       page:this.state.page + num
-    });
+    }));
   }
 
+  changeSort(sort) {
+    this.setState(Object.assign({},this.state,{
+      sort:sort
+    }));
+    
+  }
+
+  
+
   render() {
-    let renderList = this.props.todos.sort(
-      (a,b) => {
-        return b.time-a.time
-      }).filter((item,index) => {
+    let renderList = this.props.todos;
+    switch(this.state.sort){
+      case 0:
+        renderList = renderList.sort(
+          (a,b) => {
+            return a.time-b.time
+        })
+        break;
+      case 1:
+        renderList = renderList.sort(
+          (a,b) => {
+            return b.time-a.time
+        })
+        break;
+      case 2:
+        renderList = renderList.sort(function(a,b){
+          return a.text>b.text
+        })
+        break;
+      case 3:
+        renderList = renderList.sort(function(a,b){
+          return a.text<b.text
+        });
+        break;
+    }   
+      renderList = renderList.filter((item,index) => {
         return index >= (this.state.page-1) * this.props.limit && index < this.state.page * this.props.limit
       });
-      console.log(renderList)
     return (
-      <ul className={styles.list} style={{ height: renderList.length * 49 + 30 }}>
+      <ul className={styles.list} style={{ height: renderList.length * 49 + 50 }}>
+        <Sort sort={this.state.sort} changeSort={this.changeSort.bind(this)} ></Sort>
         {renderList.map(
           (todo,index) => {
             return <TodoItem
